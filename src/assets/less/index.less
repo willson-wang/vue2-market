@@ -1,0 +1,523 @@
+/*
+ * @Author: peter 
+ * @Date: 2017-10-12 10:12:50 
+ * @Last Modified by: peter
+ * @Last Modified time: 2018-03-05 14:30:19
+ */
+
+* {
+    box-sizing: border-box;
+}
+ 
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.clearFix::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.clearFix {
+    zoom: 1;
+}
+
+.f-l {
+    float: left;
+}
+
+.f-r {
+    float: right;
+}
+
+.block {
+    display: block;
+}
+
+.none {
+    display: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.opc {
+    opacity: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+// @base-main: #5b81fe;
+
+// // 表头hover淡蓝色
+// @base-main-hover: #6f88f9;
+
+// // 失败色，用于错误提示文字及边框色
+// @base-error: #ff455b;
+
+// // 警告色，用于警告信息文字及边框色
+// @base-notice: #ffba34;
+
+// // 成功色，用于提示成功信息文字及边框色
+// @base-succ: #35d87f;
+
+// 主色，用于导航栏色块，当前状态色，蓝色按钮， 链接可点击文字
+@base-main: #20A0FF;
+
+// 表头hover淡蓝色
+@base-main-hover: #58B7FF;
+
+// 失败色，用于错误提示文字及边框色
+@base-error: #FF4949;
+
+// 警告色，用于警告信息文字及边框色
+@base-notice: #F7BA2A;
+
+// 成功色，用于提示成功信息文字及边框色
+@base-succ: #13CE66;
+
+// 一级信息色,用于一级标题，正文等
+@base-info1: #373e4f;
+
+// 二级信息色,用于列表文字，副文
+@base-info2: #767d8f;
+
+// 三级信息，如说明文，提示文字，灰色按钮等
+@base-info3: #a3aab7;
+
+// 分割线，线框色
+@base-bdr: #e4eaec;
+
+// 大面积背景色
+@base-body-bg: #f0f5f7;
+
+// 深色背景色
+@base-deep-bg: #1e263a;
+
+// 浅深色背景色
+@base-shallow-deep-bg: #2d374f;
+
+// 浅蓝背景色
+@base-shallow-blue-bg: #7489cc;
+
+// 鼠标悬停色
+@base-hover: #f4f9fc;
+
+// 浅白字体色
+@base-font-shallow-white: #f4f9fc;
+
+// 白色
+@base-white: #fff;
+
+// 浅白色
+@base-shallow-white: #EFF2F7;
+
+// 浅灰色
+@base-shallow-gray: #ccc;
+
+// 浅hover色
+@base-shallow-hover: #f6fafb;
+
+// 透明色
+@base-transparent: transparent;
+
+// disable色
+@base-font-disabled: #bfcbd9;
+
+@base-bg-disabled: #eef1f6;
+
+@base-bdr-disabled: #d1dbe5;
+
+.set-padding (@top: 0, @left: 0, @bottom: 0, @right: 0) {
+    padding: @arguments !important;
+}
+
+.bdr (@width: 1px, @color:#ccc) {
+    border: @width solid @color;
+}
+
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #000 ) {
+    box-shadow: @arguments;
+}
+
+.bdr-radius (@top: 0, @left: 0, @bottom: 0, @right: 0) {
+    border-radius: @arguments;
+}
+
+.w (@width: 0) {
+    width: @width;
+}
+
+.h (@height: 0) {
+    width: @height;
+}
+
+.wh (@width: 0, @height: 0) {
+    width: @width;
+    height: @height;
+}
+
+.bg (@color: #fff) {
+    background-color: @color;
+}
+
+.fz (@fontSize: 12px) {
+    font-size: @fontSize;
+}
+
+.middle-show {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+}
+
+
+
+// 单行文本省略号
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+//多行文本省略号
+.mutil-ellipsis (@lineNum: 2) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: @lineNum;
+    -webkit-box-orient: vertical;
+}
+
+
+html,body {
+    width: 100%;
+    height: 100%;
+    background-color: @base-body-bg;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+// 过渡动画
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .2s ease
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.ui-theme-popover {
+    padding: 15px 10px;
+    border-radius: 6px;
+    // 去掉主题选择单选框的文字显示
+    .ui-pop-over .el-radio__label {
+        font-size: 0;
+    }
+
+    .ui-pop-over .el-radio__inner {
+        width: 28px;
+        height: 28px;
+    }
+
+    .ui-pop-over .el-radio__inner::after {
+        width: 10px;
+        height: 10px;
+    }
+
+    .ui-pop-over label:first-of-type .el-radio__inner {
+        border-color: #5b81fe;
+        background: #5b81fe;
+    }
+
+    .ui-pop-over label:nth-of-type(2) .el-radio__inner {
+        border-color: #2fb5f2;
+        background: #2fb5f2;
+    }
+
+    .ui-pop-over label:nth-of-type(3) .el-radio__inner {
+        border-color: #2dc773;
+        background: #2dc773;
+    }
+
+    .ui-pop-over label:nth-of-type(4) .el-radio__inner {
+        border-color: #926dde;
+        background: #926dde;
+    }
+
+    .ui-pop-over label:nth-of-type(5) .el-radio__inner {
+        border-color: #5b81fe;
+        background: #5b81fe;
+    }
+
+    .ui-pop-over label:last-of-type .el-radio__inner {
+        border-color: #1bc992;
+        background: #1bc992;
+    }
+
+    .ui-pop-over .el-radio+.el-radio {
+        margin-left: 5px;
+    }
+}
+
+.ui-pop-over  {
+    
+    .ui-chart-date-title {
+        line-height: 30px;
+        height: 30px;
+    }
+
+    .ui-chart-date-btn {
+        margin-top: 15px;
+    }  
+}
+
+.ui-mutiltages-manage {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        border-bottom: 1px solid @base-bdr;
+
+        >span {
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+        }
+
+        &:last-of-type {
+            border-bottom: 0;
+        }
+    }
+}
+
+.ui-user-popover {
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+
+    .popper__arrow {
+        border-bottom-color: #6b6feb !important;
+    }
+    
+    .popper__arrow::after {
+        border-bottom-color: #6b6feb;
+    }
+} 
+
+// 重新编辑首页运费计算处input标签的长度
+.ui-home-card-item .el-form-item {
+    width: 100%;
+}
+
+.ui-home-card-item .el-form-item .el-form-item__content {
+    width: 70%;
+}
+.ui-product-search .el-input__inner {
+    height: 30px;
+}
+// 筛选选择框
+.ui-search-select {
+    .ui-search-com_sel {
+        li {
+            .ui-checkbox-group {
+                display: inline-block;
+                div {
+                    height: 40px;
+                    width: 153px;
+                    display: inline-block;
+                    line-height: 40px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+.ui-order-screen  .el-input__inner {
+    height: 30px;
+}
+.ui-product-screen .el-input__inner {
+    height: 30px;
+}
+// 清除popover样式
+.clear-popover-style {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.detail .el-tabs__item.is-active {
+    color: #5b81fe!important;
+}
+
+.detail .el-tabs__active-bar {
+    background-color: #5b81fe;
+}
+
+.detail .el-tabs__item {
+    font-size: 16px;
+}
+
+.detail .el-tab-pane {
+    display: none;
+}
+
+.detail .el-collapse-item__header {
+
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 15px;
+    border-bottom: 1px solid #dfe6ec;
+    padding-left: 0;
+    margin-left: 15px;
+    margin-bottom: -1px;
+}
+
+.detail .el-tabs__header {
+    margin: 0;
+}
+
+.detail .el-collapse-item__content form {
+    border: 1px solid #dfe6ec;
+}
+
+.detail .el-collapse {
+    border: 1px solid transparent;
+}
+
+.detail .el-form-item:first-child {
+    margin-top: 20px;
+}
+
+.detail .el-collapse-item__wrap {
+    border: 1px solid transparent;
+}
+
+.record-header .el-tabs__item {
+    font-size: 14px!important;
+    color: #373e4f;
+}
+
+.record-header .el-tabs__active-bar {
+    display: none!important;
+}
+
+.detail-body {
+    top:68px!important;
+    padding: 0!important;
+    right: 0!important;
+}
+
+//详情表格数据
+.detail-body {
+    top:68px!important;
+    padding: 0!important;
+    right: 0!important;
+}
+
+.detail-fold .el-form-item__label {
+    width: 110px!important;
+    text-align: left;
+}
+
+.detail-fold .el-form-item__content {
+    margin-left: 120px!important;
+    text-align: left;
+}
+
+.detail-fold .el-input__inner {
+    border-radius: 2px;
+    border-color: transparent;
+
+}
+.detail-fold .center-block .el-input__inner {
+   width: 400px;
+
+}
+
+.detail-fold .el-input__inner:focus {
+    border-color: #518bfe;
+}
+
+.detail-fold  .el-input__inner:hover {
+    border-color: #518bfe;
+}
+
+.detail-fold  .el-checkbox {
+    width: 100px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.detail-fold .el-checkbox__label {
+    padding-left: 10px;
+}
+.detail-fold .el-checkbox__input.is-checked .el-checkbox__inner {
+    border-radius: 2px;
+    border-color: #518bfe;
+    background-color: #518bfe;
+    width: 16px;
+    height: 16px;
+}
+
+.detail-fold .el-checkbox__inner {
+    border-radius: 2px;
+    width: 16px;
+    height: 16px;
+}
+
+// 定义tooltip样式
+.ui-tooltip {
+    border: 1px solid #e4eaec !important;
+    .ui-tooltip-info {
+        color: @base-main;
+    }
+}
+.ui-tooltip-top-light {
+    .popper__arrow{
+        border-top-color: @base-bdr !important;
+    }
+}
+
+.ui-tooltip-bottom-light {
+    .popper__arrow{
+        border-bottom-color: @base-bdr !important;
+    }
+}
+.ui-tooltip-left-light {
+    .popper__arrow{
+        border-left-color: @base-bdr !important;
+    }
+}
+.ui-tooltip-right-light {
+    .popper__arrow{
+        border-right-color: @base-bdr !important;
+    }
+}
